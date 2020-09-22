@@ -21,15 +21,18 @@ export class ForecastPage extends Component {
             .then(data => {
 
                 const body = data.map((repo,i) => {
+
                     const lista = repo.clima.list
+
+
                     return (<div key={i}>
 
-                        <div>{repo.location.city} </div>
-                        <div>
-                            {lista.map((key, n) => (<div key={n}>Day {lista[n].dt_txt} -- temp {lista[n].main.temp}</div>))}
-                        </div>
+                            <div><b>{repo.location.city}</b></div>
+                            <div className="m5">
+                                {lista.map((key, n) => (<div key={n}>Day {lista[n].dt_txt} -- temp {lista[n].main.temp}  </div>))}
+                            </div>
 
-                    </div>
+                        </div>
                     )
                 });
 
@@ -50,7 +53,7 @@ export class ForecastPage extends Component {
         const id = e.target.id.value || ''
 
         fetch(`/forecast/${id}`, {
-                method: 'GET',
+            method: 'GET',
         })
             .then(response => response.json())
             .then(data => {
@@ -58,10 +61,11 @@ export class ForecastPage extends Component {
                 const body = data.map((repo,i) => {
 
                     const lista = repo.clima.list
+
                     return (<div key={i}>
-                            <div>{repo.location.city} </div>
-                            <div>
-                                {lista.map((key, n) => (<div key={n}>Day {lista[n].dt_txt} -- temp {lista[n].main.temp}</div>))}
+                            <div><b>{repo.location.city}</b></div>
+                            <div className="m5">
+                                {lista.map((key, n) => (<div key={n}>Day {lista[n].dt_txt} -- temp {lista[n].main.temp}  </div>))}
                             </div>
                         </div>
                     )
@@ -82,10 +86,10 @@ export class ForecastPage extends Component {
             <div>
                 <h3>Forecast data :</h3>
                 <form action="/forecast/" method="get" name="form" id="form" onSubmit={this.onSubmit}>
-                <div>
-                    <input type="text" name="id" id="id" />
-                    <input type="submit" value="go" />
-                </div>
+                    <div>
+                        <input type="text" name="id" id="id" />
+                        <input type="submit" value="go" />
+                    </div>
                 </form>
                 <div>
                     {this.state.body}
