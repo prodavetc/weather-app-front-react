@@ -21,9 +21,10 @@ export class CurrentPage extends Component {
             .then(data => {
 
                 const body = data.map((repo,i) => {
+                    const imgStatus = '//openweathermap.org/img/wn/' + repo.clima.weather[0].icon + '.png'
                     return (<div key={i}>
 
-                            <div>{repo.location.city} temp:{repo.clima.main.temp}</div>
+                            <div><b>{repo.location.city}</b> temp:{repo.clima.main.temp} <img src={imgStatus} /></div>
                             <div>
                                 <div>lon: {repo.clima.coord.lon}, lat:{repo.clima.coord.lat}</div>
                                 <div>wind: {repo.clima.wind.speed} , humidity:{repo.clima.main.humidity}</div>
@@ -55,9 +56,9 @@ export class CurrentPage extends Component {
             .then(data => {
 
                 const body = data.map((repo,i) => {
-
+                    const imgStatus = '//openweathermap.org/img/wn/' + repo.clima.weather[0].icon + '.png'
                     return (<div key={i}>
-                            <div>{repo.location.city} temp:{repo.clima.main.temp}</div>
+                            <div><b>{repo.location.city}</b> temp:{repo.clima.main.temp} <img src={imgStatus} /></div>
                             <div>
                                 <div>lon: {repo.clima.coord.lon}, lat:{repo.clima.coord.lat}</div>
                                 <div>wind: {repo.clima.wind.speed} , humidity:{repo.clima.main.humidity}</div>
